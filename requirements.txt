@@ -1,0 +1,65 @@
+# CoT-Route — Python Dependencies
+# ============================================================
+# Python 3.12.3 | CPU-only | No GPU required
+# Tested on: Windows 11, Ubuntu 22.04
+#
+# Install with:
+#   pip install -r requirements.txt
+#
+# For Windows with system Python:
+#   pip install -r requirements.txt --break-system-packages
+# ============================================================
+
+# ── Core numerical and data ──────────────────────────────────
+numpy>=1.26.0
+pandas>=2.1.0
+
+# ── Computer vision ──────────────────────────────────────────
+opencv-python>=4.8.0
+Pillow>=10.0.0
+
+# ── Machine learning and calibration ─────────────────────────
+scikit-learn>=1.3.0        # IsotonicRegression, MLPRegressor,
+                           # StandardScaler, train_test_split
+
+# ── Deep learning (CPU inference only) ───────────────────────
+torch>=2.1.0               # CPU build — no CUDA needed
+                           # Install CPU-only build for faster download:
+                           # pip install torch --index-url https://download.pytorch.org/whl/cpu
+transformers>=4.37.0       # MoondreamV2 via AutoModelForCausalLM
+                           # Model: vikhyatk/moondream2 (revision 2025-01-09)
+                           # Downloads ~1.7 GB to HuggingFace cache on first run
+accelerate>=0.26.0         # Required by transformers for model loading
+
+# ── Graph and path planning ──────────────────────────────────
+networkx>=3.2.0            # Navigation graph + A* search
+
+# ── Visualisation ────────────────────────────────────────────
+matplotlib>=3.8.0
+
+# ── Utilities ────────────────────────────────────────────────
+tqdm>=4.66.0               # Progress bars
+
+# ── Optional: figure export (used in paper figure generation) ─
+# cairosvg>=2.7.0          # SVG to PNG export
+# Uncomment if you want to regenerate the pipeline figure SVG
+
+# ============================================================
+# Notes:
+#
+# 1. MoondreamV2 model weights (~1.7 GB) are NOT included in
+#    this repository. They are downloaded automatically from
+#    HuggingFace on the first run of phase2_vlm_reasoning.py.
+#    Ensure internet access for the first run only.
+#
+# 2. TartanAir dataset (~129 GB) must be downloaded separately.
+#    See README.md for download instructions and folder structure.
+#
+# 3. All experiments were run on CPU only (no GPU required).
+#    Phase 2 VLM inference is slow on CPU (~2-5s per frame).
+#    Use pre-computed vlm_cost_inputs.json to skip inference:
+#      python phase3_planner.py   (reads pre-built VLM outputs)
+#
+# 4. Minimum RAM: 16 GB. Recommended: 32 GB+.
+#    Full pipeline on 6,453 keyframes requires ~8 GB RAM peak.
+# ============================================================
