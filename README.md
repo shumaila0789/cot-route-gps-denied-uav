@@ -21,6 +21,3 @@ python phase3_planner.py
 
 ## Results
 See results/ for CSV tables matching Tables II and III in the paper.
-
-## Citation
-[BibTeX entry once published]
